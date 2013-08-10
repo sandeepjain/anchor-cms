@@ -54,6 +54,7 @@
 
 				<div class="more">Looks like you are running apache with <code>mod_rewrite</code> enabled.<br>
 				The installer will create the htaccess for you.</div>
+                <div class="more"><input id="rewrite" name="rewrite" type="checkbox" value="1" checked></div>
 
 			<?php elseif($support->is_apache()): ?>
 
@@ -66,6 +67,11 @@
 
 				<div class="more">Looks like you are running <code>PHP</code> as a fastcgi process (<?php echo PHP_SAPI; ?>).<br>
 				You will have to setup your own url rewriting.</div>
+
+			<?php else: ?>
+
+				<div class="more">Looks like we are unable to identify mod_rewrite setting for you. Create the htaccess file for me anyway.</div>
+				<div class="more"><input id="rewrite" name="rewrite" type="checkbox" value="1">
 
 			<?php endif; ?>
 			</p>

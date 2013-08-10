@@ -19,6 +19,9 @@ class Config {
 			case 'db':
 				$this->db();
 				break;
+			case 'session':
+				$this->session();
+				break;
 		}
 	}
 
@@ -46,6 +49,14 @@ class Config {
 		));
 
 		file_put_contents(PATH . 'anchor/config/db.php', $distro);
+    }
+
+    private function session() {
+		$distro = Braces::compile(APP . 'storage/session.distro.php', array(
+		));
+
+		file_put_contents(PATH . 'anchor/config/session.php', $distro);
 	}
+
 
 }

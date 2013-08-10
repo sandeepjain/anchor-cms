@@ -18,6 +18,7 @@ class Installer {
 		// write config files
 		$this->config->write('app');
 		$this->config->write('db');
+		$this->config->write('session');
 
 		// install database data
 		$this->data();
@@ -209,7 +210,7 @@ class Installer {
 	}
 
 	private function rewrite() {
-		if($this->support->has_mod_rewrite()) {
+		//if($this->support->has_mod_rewrite()) {
 			$htaccess = Braces::compile(APP . 'storage/htaccess.distro', array(
 				'base' => $this->session['metadata']['site_path'],
 				'index' => ($this->support->is_cgi() ? 'index.php?/$1' : 'index.php/$1')
@@ -222,7 +223,6 @@ class Installer {
 				// stash htaccess file in session
 				Session::put('htaccess', $htaccess);
 			}
-		}
+		//}
 	}
-
 }

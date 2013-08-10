@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `{{prefix}}extend` (
   `field` enum('text','html','image','file','bool') NOT NULL,
   `key` varchar(160) NOT NULL,
   `label` varchar(160) NOT NULL,
-  `attributes` text NOT NULL,
+  `attributes` text NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB CHARSET={{charset}};
 
