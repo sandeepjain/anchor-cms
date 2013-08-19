@@ -108,6 +108,10 @@ Route::get($posts_page->slug . '/(:any)', function($slug) use($posts_page) {
 		return Anchor::page_not_found();
 	}
 
+	if( $post->status === 'draft' && !Auth::user()) {
+		return Anchor::page_not_found();
+	}
+
 	Registry::set('page', $posts_page);
 	Registry::set('article', $post);
 	Registry::set('category', Category::find($post->category));
